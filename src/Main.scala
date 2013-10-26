@@ -51,4 +51,78 @@ object Main extends App {
   val randomBigInt: BigInt = randomLong
   println("Convert the BigInt into base 36")
   println(randomBigInt.toString(36))
+
+//  Chapter 2
+
+  println("Chapter 2")
+  println("Conditional expressions:")
+  if(x > 0) 1 else -1
+
+  val s = if(x > 0) 1 else -1 // Do this
+  var s1 = 0
+  if (x > 0) s1 = 1 else s1 = -1 // Not this
+  println(s + " : " + s1)
+
+  note = "Scala has no switch statement. See pattern matching for similar functionality."
+  println(note)
+
+  // Looping
+  var n = 10
+  while (n > 0) {
+    println("Item #" + n)
+    n -= 1
+  }
+
+  n = 10
+  for(i <- 1 to n) {
+    println("Another Item #" + i)
+  }
+
+  val s3 = "Hello"
+  var sum = 0
+  for(i <- 0 until s3.size) { // The last value for i is s.size - 1
+    println(s3(i))
+    sum += s3(i)
+  }
+  println(sum)
+
+  note = "This is an example of nesting loops with for syntax. Pretty terse syntax"
+  println(note)
+  for(i <- 1 to 3; j <- 1 to 3) print((10 * i + j) + " ")
+
+  println("\n")
+
+  for(i <- 1 to 3; j <- 1 to 3 if i != j) print((10 * i + j) + " ")
+
+  println("\n")
+
+  // For Comprehension syntax
+  for(i <- 1 to 10) yield i % 3
+
+  for(c <- "Hello"; i <- 0 to 1) yield print((c + i).toChar) // Prints all characters through the input string, "Hello". The inner loop i <- 0 does the input string plus the next character
+
+  println("\n")
+
+  // Functions
+
+  def abso(x: Double) = if(x >= 0) x else -x
+  println(abso(10))
+  println(abso(-555))
+
+  note = "If the function isn't recursive you don't need to specify the type of the return value"
+  println(note)
+
+  note = "If the body of the function requires more than one expression, use a block. The last expression of the block becomes the value that the function returns."
+  println(note)
+
+  def fac(n: Int) = {
+    var r = 1
+    for(i <- 1 to n) r = r * i
+    r
+  }
+  println("Factorial 10: " + fac(10))
+
+  // Factorial using recursion
+  def recFac(n: Int): Int = if(n <= 0) 1 else n * recFac(n - 1)
+  println("Factorial 7 (Recursive): " + recFac(7))
 }
